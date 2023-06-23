@@ -1,0 +1,15 @@
+API TEST KASIR AJA
+-Create User:
+    - Create user use valid token
+    - Create user use invalid token
+-Get User detail:
+    - Get user detail use valid user id
+    - Get user detail use invalid user id
+-Get all user list:
+    - Cek data user that has been created
+ -Update User data:
+    - Update user data use valid user id
+    - Update user data use invalid user id
+-Delete User data:
+    - Delete user
+    - Get detail deleted user

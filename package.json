@@ -1,0 +1,21 @@
+{
+  "name": "tugaspekan4-api_automation",
+  "version": "1.0.0",
+  "description": "api automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --timeout 10000"
+  },
+  "keywords": [
+    "mocha",
+    "chai",
+    "supertest"
+  ],
+  "author": "aar",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "jsonschema": "^1.4.1",
+    "supertest": "^6.3.3"
+  }
+}
