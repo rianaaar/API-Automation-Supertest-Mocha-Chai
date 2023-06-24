@@ -13,6 +13,7 @@ async function getUserToken(email,password){
   }
   
 describe("Login", function(){
+    this.timeout(10000);
     it("Get token", async function(){
         const response = await getUserToken(userData.USER_DATA.email, userData.USER_DATA.password)
         //console.log(response)

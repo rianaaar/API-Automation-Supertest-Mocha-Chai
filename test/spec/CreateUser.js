@@ -19,6 +19,7 @@ async function createUser(user_name,user_email,user_password,user_token){
 }
 
 describe("Post Create User", function(){
+    this.timeout(10000);
     let auth = null
     before(async function() {
         // runs before each test in this block

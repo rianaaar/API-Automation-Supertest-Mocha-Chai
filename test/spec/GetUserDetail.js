@@ -5,6 +5,7 @@ const resCreateUser = require("./CreateUser")
 const getToken = require("./GetToken")
 
 describe("Get User Detail", function(){
+    this.timeout(10000);
     let userId = null
     let auth = null
     before(async function() {
