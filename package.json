@@ -1,10 +1,11 @@
 {
-  "name": "tugaspekan4-api_automation",
+  "name": "api_automation",
   "version": "1.0.0",
   "description": "api automation",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout 15000"
+    "runTest": "mocha test/spec/crudTest.js --timeout 15000 --reporter mochawesome",
+    "test": "mocha test/spec/CreateUser.js test/spec/GetUserDetail.js --timeout 15000 --reporter mochawesome"
   },
   "keywords": [
     "mocha",
@@ -17,5 +18,8 @@
     "chai": "^4.3.7",
     "jsonschema": "^1.4.1",
     "supertest": "^6.3.3"
+  },
+  "devDependencies": {
+    "mochawesome": "^7.1.3"
   }
 }

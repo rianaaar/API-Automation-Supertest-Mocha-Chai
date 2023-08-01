@@ -1,0 +1,234 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-08-01T15:10:31.531Z",
+    "end": "2023-08-01T15:10:33.358Z",
+    "duration": 1827,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "aec819f8-6dd4-469e-8deb-139244a30156",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "273afca0-4985-4176-b7cc-fce8cd742e75",
+          "title": "Login",
+          "fullFile": "F:\\sanbercode\\API automation supertest, mocha chai\\test\\spec\\crudTest.js",
+          "file": "\\test\\spec\\crudTest.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Get token",
+              "fullTitle": "Login Get token",
+              "timedOut": false,
+              "duration": 450,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await getUserToken(userData.USER_DATA.email, userData.USER_DATA.password)\n//console.log(response)\nexpect(await response.statusCode).to.eql(201)\nexpect(await response.body.data.user.email).to.eql(userData.USER_DATA.email)",
+              "err": {},
+              "uuid": "fbbd9bea-4daf-4f2d-b35d-842acb9305ea",
+              "parentUUID": "273afca0-4985-4176-b7cc-fce8cd742e75",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "fbbd9bea-4daf-4f2d-b35d-842acb9305ea"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 450,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 10000
+        },
+        {
+          "uuid": "05e86baa-8992-4905-bb51-3ace65e2d3bb",
+          "title": "CRUD data user",
+          "fullFile": "F:\\sanbercode\\API automation supertest, mocha chai\\test\\spec\\crudTest.js",
+          "file": "\\test\\spec\\crudTest.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"CRUD data user\"",
+              "fullTitle": "CRUD data user \"before all\" hook in \"CRUD data user\"",
+              "timedOut": false,
+              "duration": 431,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// runs before each test in this block\nconst resGetToken = await getToken(userData.USER_DATA.email, userData.USER_DATA.password)\nauth = await resGetToken.body.data.accessToken",
+              "err": {},
+              "uuid": "6aa0d0bf-3d9d-4574-82d0-870088ae6ce5",
+              "parentUUID": "05e86baa-8992-4905-bb51-3ace65e2d3bb",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create user",
+              "fullTitle": "CRUD data user Create user",
+              "timedOut": false,
+              "duration": 400,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request\n                                .post(\"/users\")\n                                .send({\n                                    \"name\": userData.USER_DATA.userName,\n                                    \"email\": userData.USER_DATA.userEmail,\n                                    \"password\": userData.USER_DATA.userPassword\n                                })\n                                .set({\n                                    Authorization : 'Bearer ' + auth,\n                                    Accept : \"application/json\"\n                                });               \nuserId = await response.body.data.userId\nexpect(await response.statusCode).to.eql(201)\nexpect(await response.body.status).to.eql(\"success\")\nexpect(await response.body.data.name).to.eql(userData.USER_DATA.userName)",
+              "err": {},
+              "uuid": "1d09ae34-8d60-476a-bdf1-f90ee8af8430",
+              "parentUUID": "05e86baa-8992-4905-bb51-3ace65e2d3bb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get user detail",
+              "fullTitle": "CRUD data user Get user detail",
+              "timedOut": false,
+              "duration": 83,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request\n                            .get(\"/users/\"+userId)\n                            .set({\n                                Authorization : 'Bearer ' + auth,\n                                Accept : \"application/json\"\n                            });\nexpect(await response.statusCode).to.eql(200)\nexpect(await response.body.data.user.id).to.eql(userId)\nexpect(await response.body.data.user.email).to.eql(userData.USER_DATA.userEmail)",
+              "err": {},
+              "uuid": "6373c3ce-6af2-411c-ad19-3c66e2ca2626",
+              "parentUUID": "05e86baa-8992-4905-bb51-3ace65e2d3bb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Update username",
+              "fullTitle": "CRUD data user Update username",
+              "timedOut": false,
+              "duration": 81,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request\n                            .put(\"/users/\"+userId)\n                            .send({\n                                \"name\": \"kasir1 update\",\n                                \"email\": userData.USER_DATA.userEmail\n                            })\n                            .set({\n                                Authorization : 'Bearer ' + auth,\n                                Accept : \"application/json\"\n                            });\nexpect(await response.statusCode).to.eql(200)\nexpect(await response.body.message).to.eql(\"User berhasil diupdate\")\nexpect(await response.body.data.name).to.eql(\"kasir1 update\")",
+              "err": {},
+              "uuid": "cbc6a139-14ec-4d80-aacf-703addbfd628",
+              "parentUUID": "05e86baa-8992-4905-bb51-3ace65e2d3bb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Delete user",
+              "fullTitle": "CRUD data user Delete user",
+              "timedOut": false,
+              "duration": 199,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request\n                            .delete(\"/users/\"+userId)\n                            .set({\n                                Authorization : 'Bearer ' + auth,\n                                Accept : \"application/json\"\n                            });                      \n//console.log(response)\nexpect(await response.statusCode).to.eql(200)\nexpect(await response.body.message).to.eql(\"User berhasil dihapus\")",
+              "err": {},
+              "uuid": "2f7b9b71-bb8d-4bcd-aae5-37f667633694",
+              "parentUUID": "05e86baa-8992-4905-bb51-3ace65e2d3bb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get detail deleted user",
+              "fullTitle": "CRUD data user Get detail deleted user",
+              "timedOut": false,
+              "duration": 163,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request\n                            .get(\"/users/\"+userId)\n                            .set({\n                                Authorization : 'Bearer ' + auth,\n                                Accept : \"application/json\"\n                            });                      \n//console.log(response)\nexpect(await response.statusCode).to.eql(404)\nexpect(await response.body.message).to.eql(\"User tidak ditemukan\")",
+              "err": {},
+              "uuid": "851f30f9-8d0e-4119-a750-0aaab57dd67c",
+              "parentUUID": "05e86baa-8992-4905-bb51-3ace65e2d3bb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1d09ae34-8d60-476a-bdf1-f90ee8af8430",
+            "6373c3ce-6af2-411c-ad19-3c66e2ca2626",
+            "cbc6a139-14ec-4d80-aacf-703addbfd628",
+            "2f7b9b71-bb8d-4bcd-aae5-37f667633694",
+            "851f30f9-8d0e-4119-a750-0aaab57dd67c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 926,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 10000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 15000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
